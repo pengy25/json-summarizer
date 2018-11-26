@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>localProject</groupId>
+  <artifactId>json-summarizer</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>JsonSummarizer</name>
+  
+  <dependencies>
+  	<dependency>
+  		<groupId>com.google.code.gson</groupId>
+  		<artifactId>gson</artifactId>
+  	</dependency>
+  </dependencies>
+  <dependencyManagement>
+  	<dependencies>
+  		<dependency>
+  			<groupId>com.google.code.gson</groupId>
+  			<artifactId>gson</artifactId>
+  			<version>2.8.5</version>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+  
+  <build>
+  	<plugins>
+  		<!-- The plugin for jar manifest handling -->
+  		<!-- See usage examples of maven-archiver documentation for details: -->
+  		<!-- https://maven.apache.org/shared/maven-archiver/examples/classpath.html -->
+  		<!-- and https://maven.apache.org/shared/maven-archiver/examples/manifest.html -->
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-jar-plugin</artifactId>
+  			<version>2.1</version>
+  			
+  			<configuration>
+				<archive>
+					<manifest>
+						<addClasspath>true</addClasspath>
+						<mainClass>jsonSummarizer.Main</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+  		</plugin>
+  		
+  		<!-- The plugin for making a single jar -->
+  		<!-- See usage example of maven-shade-plugin documentation for details: -->
+  		<!-- https://maven.apache.org/plugins/maven-shade-plugin/usage.html -->
+  		<plugin>
+  			<groupId>org.apache.maven.plugins</groupId>
+  			<artifactId>maven-shade-plugin</artifactId>
+  			<version>3.2.1</version>
+
+			<configuration>
+			</configuration>
+  
+  			<executions>
+  				<execution>
+  					<phase>package</phase>
+  					<goals><goal>shade</goal></goals>
+  				</execution>
+  			</executions>
+  		</plugin>
+  	</plugins>
+  </build>
+</project>
